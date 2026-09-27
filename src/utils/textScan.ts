@@ -25,18 +25,19 @@ export const scanText = async () => {
   const text = await getBlockAtCursor(editor);
   if (!text) return;
 
-  console.log(text);
+  vscode.window.setStatusBarMessage(`Scanned ${text.split('\n').length} lines`, 2000);
 };
 
-let timer: ReturnType<typeof setTimeout> | undefined;
-const scheduleScan = () => {
-  clearTimeout(timer);
-  timer = setTimeout(scanText, 400);
-};
+export const startAutoScan = (): vscode.Disposable => {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const scheduleScan = () => {
+    clearTimeout(timer);
+    timer = setTimeout(scanText, 400);
+  };
 
-export const activate = (context: vscode.ExtensionContext) => {
-  context.subscriptions.push(
+  return vscode.Disposable.from(
     vscode.window.onDidChangeTextEditorSelection(scheduleScan),
     vscode.workspace.onDidChangeTextDocument(scheduleScan),
+    { dispose: () => clearTimeout(timer) },
   );
 };

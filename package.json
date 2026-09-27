@@ -1,5 +1,27 @@
 {
+  "name": "realtime-security-analysis-tool",
+  "displayName": "Realtime Security Analysis Tool",
+  "description": "Scans code for security risks as you type",
+  "version": "0.0.1",
+  "publisher": "linus",
+  "engines": {
+    "vscode": "^1.138.0"
+  },
+  "main": "./out/main.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "securityScanner.scan",
+        "title": "Scan current block"
+      }
+    ]
+  },
   "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky"
@@ -13,7 +35,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/vscode": "^1.138.0",
+    "@types/vscode": "~1.138.0",
     "eslint": "^10.11.0",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
