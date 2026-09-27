@@ -17,7 +17,27 @@
         "command": "securityScanner.scan",
         "title": "Scan current block"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Security Scanner",
+      "properties": {
+        "securityScanner.layaUrl": {
+          "type": "string",
+          "default": "http://localhost:8000",
+          "description": "Base URL of the Laya analysis server."
+        },
+        "securityScanner.layaApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key sent as a Bearer token to Laya."
+        },
+        "securityScanner.timeout": {
+          "type": "number",
+          "default": 30000,
+          "description": "Request timeout in milliseconds."
+        }
+      }
+    }
   },
   "scripts": {
     "compile": "tsc -p ./",

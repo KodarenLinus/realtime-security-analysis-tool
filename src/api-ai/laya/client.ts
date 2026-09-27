@@ -14,7 +14,11 @@ export const apiClientLaya = ({
 }: ApiClientLayaOptions) => {
   const endpoint = `${url.replace(/\/+$/, '')}/v1/systemone`;
 
-  const predict = async (document: string, querys: Querys): Promise<AIResponse> => {
+  const predict = async (
+    document: string,
+    querys: Querys,
+    signal?: AbortSignal,
+  ): Promise<AIResponse> => {
     const headers: Record<string, string> = { 'Content-Type': 'application/json' };
     if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
 
@@ -24,10 +28,12 @@ export const apiClientLaya = ({
         method: 'POST',
         headers,
         body: JSON.stringify({ state: { document }, questions: querys }),
-        signal: AbortSignal.timeout(timeout),
+        signal: signal
+          ? AbortSignal.any([signal, AbortSignal.timeout(timeout)])
+          : AbortSignal.timeout(timeout),
       });
     } catch (err) {
-      throw new Error('Laya request failed: ', { cause: err });
+      throw new Error(`Laya request failed: ${(err as Error).message}`, { cause: err });
     }
 
     if (!res.ok) {

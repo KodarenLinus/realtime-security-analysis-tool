@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { scanText, startAutoScan } from './utils/textScan';
+import { diagnostics, riskHighlight, scanText, startAutoScan } from './utils/textScan';
 
 export function main(auto: boolean): vscode.Disposable {
   if (auto) {
@@ -12,7 +12,7 @@ export function main(auto: boolean): vscode.Disposable {
 }
 
 export const activate = (context: vscode.ExtensionContext) => {
-  context.subscriptions.push(main(true));
+  context.subscriptions.push(main(true), diagnostics, riskHighlight);
 };
 
 export const deactivate = () => {};
