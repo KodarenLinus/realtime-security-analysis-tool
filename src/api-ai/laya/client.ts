@@ -27,11 +27,7 @@ export const apiClientLaya = ({
         signal: AbortSignal.timeout(timeout),
       });
     } catch (err) {
-      const reason =
-        err instanceof Error && err.name === 'TimeoutError'
-          ? `timed out after ${timeout} ms`
-          : 'could not connect (is laya-serve running?)';
-      throw new Error(`Laya request failed: ${reason}`);
+      throw new Error('Laya request failed: ', { cause: err });
     }
 
     if (!res.ok) {
