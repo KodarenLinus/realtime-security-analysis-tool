@@ -113,17 +113,17 @@ Each check sends a code snippet plus a question, and gets back a typed answer:
 
 ## Troubleshooting
 
-| Problem | Fix |
-| --- | --- |
-| `pip` is not recognized (Windows) | Use `py -m pip`, or activate the venv first. If `py` is missing too, install Python with `winget install Python.Python.3.12` and reopen PowerShell. |
-| "Running scripts is disabled" when activating the venv | Run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once. |
-| `python` opens the Microsoft Store | Turn off the python.exe aliases under Settings › Apps › Advanced app settings › App execution aliases. |
-| Server hangs while loading the model | Make sure `USE_TF=0` is set. |
-| "could not connect" | The server isn't running, or is on a different port. |
-| HTTP 401 | The key in the client doesn't match `LAYA_API_KEY`. |
-| Request times out | The model is probably still loading. Wait, or raise `timeout` while testing. |
-| "Top-level await is not supported" | Wrap test code in an `async function main()` and call `main()`. |
-| Environment variables are gone | PowerShell `$env:` variables only last for the current window; set them again. |
+| Problem                                                | Fix                                                                                                                                                 |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pip` is not recognized (Windows)                      | Use `py -m pip`, or activate the venv first. If `py` is missing too, install Python with `winget install Python.Python.3.12` and reopen PowerShell. |
+| "Running scripts is disabled" when activating the venv | Run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once.                                                                                     |
+| `python` opens the Microsoft Store                     | Turn off the python.exe aliases under Settings › Apps › Advanced app settings › App execution aliases.                                              |
+| Server hangs while loading the model                   | Make sure `USE_TF=0` is set.                                                                                                                        |
+| "could not connect"                                    | The server isn't running, or is on a different port.                                                                                                |
+| HTTP 401                                               | The key in the client doesn't match `LAYA_API_KEY`.                                                                                                 |
+| Request times out                                      | The model is probably still loading. Wait, or raise `timeout` while testing.                                                                        |
+| "Top-level await is not supported"                     | Wrap test code in an `async function main()` and call `main()`.                                                                                     |
+| Environment variables are gone                         | PowerShell `$env:` variables only last for the current window; set them again.                                                                      |
 
 ## Documentation
 

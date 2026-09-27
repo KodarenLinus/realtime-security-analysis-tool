@@ -1,4 +1,4 @@
 const run = (): string => {
-    console.log("test")
-    return ""
-}
+  console.log('test');
+  return '';
+};
