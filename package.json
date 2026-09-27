@@ -12,11 +12,13 @@
     "*.{json,md,yml}": "prettier --write"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "eslint": "^10.11.0",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
     "prettier": "^3.9.9",
-    "typescript": "^7.0.2"
+    "typescript": "~6.0.0",
+    "typescript-eslint": "^8.70.1"
   }
 }
